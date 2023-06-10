@@ -78,7 +78,14 @@ export default function Dashboard() {
     const getProfile = async () =>{
 		setLoading(true);
       api.get("/users/me", config).then((res) => {
+        
+        // if (res.status === 401) {
+        //   localStorage.removeItem("token");
+        //   navigate("/login");
+        // }
+
         const user = res.data;
+        
 		setUser(user);
         console.log("user : ",user);
         api.get(`/orders/${user.id}`, config).then((res) => {
@@ -104,62 +111,15 @@ export default function Dashboard() {
       
 
       })
-      })}))})})}
+      })}))})}).catch((err) => {
+        if(err.response.data == "Authentication Error"){
+          localStorage.removeItem("token");
+          navigate("/login");
+        }
+    });}
       setTimeout(() => {
         setLoading(false);
       }, 2000);
-      console.log("Title : ",productTitle);
-		  
-		  
-        //   {orders.map((product) =>
-        //     product.products.map((product) =>
-			
-        //       api
-        //         .get(
-        //           `http://localhost:5002/api/v1/produits/${product.productId}`
-        //         )
-        //         .then((res) => {
-				
-        //           console.log("res.data : ", res.data);
-        //           console.log("res.data.title : ", res.data.title);
-        //           productTitle.push(res.data.title);
-        //           productImg.push(res.data.image);
-        //           productPrice.push(res.data.price);
-                  
-
-				  
-        //           const produits = res.data;
-
-        //           console.log("Produit:", produits);
-		// 		  setLoading(false);
-				  
-        //         }
-				
-				
-		// 		)
-				
-        //     )
-			
-			
-        //   )}
-		  
-          
-		  
-          // console.log("Title : ",productTitle);
-
-		  
-
-          
-
-        
-		
-        
-	
-		
-      
-	  
-    
-	
    getProfile();
 	
   }

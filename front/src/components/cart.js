@@ -66,7 +66,12 @@ useEffect(() => {
       
 
       })
-      })}))})})}
+      })}))})}).catch((err) => {
+        if(err.response.data == "Authentication Error"){
+          localStorage.removeItem("token");
+          navigate("/login");
+        }
+    });}
       setTimeout(() => {
       setLoading(false);
     }, 1000);
