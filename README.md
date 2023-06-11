@@ -28,7 +28,8 @@ Provide a detailed description of your project, including its purpose and main f
 
    inside then .env file :
 
-```NODE_ENV=development
+```bash
+NODE_ENV=development
  PORT = 5002
  EMAIL_SENDER= toto@domaine.com
  JWT_SECRET=secretcode
