@@ -12,6 +12,7 @@ import FilteredHomebyMan from "./components/filteredHomebyMan";
 import FilteredHomebyWoman from "./components/filteredHomebyWoman";
 import Dashboard from "./components/dashboard";
 import Cart from "./components/cart";
+import ModifyProduct from "./components/modifyProduct";
 
 function App() {
     return (
@@ -56,6 +57,15 @@ function App() {
                         <>
                             <NavBar />
                             <Product />
+                        </>
+                    }
+                />
+                <Route
+                    path="/modifyProduct/:id"
+                    element={
+                        <>
+                            <NavBar />
+                            <ModifyProduct />
                         </>
                     }
                 />

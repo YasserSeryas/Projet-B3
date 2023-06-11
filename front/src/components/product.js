@@ -18,10 +18,10 @@ const Product = () => {
   const navigate = useNavigate();
   const [produit, setProduit] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState("");
-  const [address, setAddress] = useState([]);
+  const [user, setUser] = useState("");
   
   const getProduct = () => {
-      console.log(url)
+        console.log(url)
       axios.get(url)
       .then(res => {
         const produit = res.data;
@@ -54,8 +54,18 @@ const Product = () => {
         alert("Failed to add to Cart");
     });
 };
+const modifyProduct = () => {
+    navigate("/modifyProduct/" + selectedProduct);
+};
 
   useEffect(() => {
+    axios.get("http://localhost:5002/api/v1/users/me", config).then((res) => {
+        console.log(res.data);
+        setUser(res.data);
+  }).catch((err) => {
+      console.log(err);
+  })
+
     getProduct();
   }, []);
   
@@ -84,6 +94,17 @@ const Product = () => {
                 <div className='flex flex-row items-center gap-12'>
                     
                     <button onClick={addtoCart} className='bg-violet-800 text-white font-semibold py-3 px-16 rounded-xl h-full' >Add to Cart</button>
+                    {user.role=="admin" ? (
+                                    <>
+                                       <button onClick={modifyProduct} className='bg-violet-800 text-white font-semibold py-3 px-16 rounded-xl h-full' >Modify</button>
+                                    </>
+                                ) : (
+                                    <>
+                                        
+                                    </>
+                                )}
+                    
+                    
                 </div>
             </div>
         </div>
