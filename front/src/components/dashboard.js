@@ -78,12 +78,7 @@ export default function Dashboard() {
     const getProfile = async () =>{
 		setLoading(true);
       api.get("/users/me", config).then((res) => {
-        
-        // if (res.status === 401) {
-        //   localStorage.removeItem("token");
-        //   navigate("/login");
-        // }
-
+      
         const user = res.data;
         
 		setUser(user);
@@ -389,7 +384,7 @@ export default function Dashboard() {
                     </div>
                     {order.products.map((product, index) => (
                       <div key={index} class="grid grid-cols-5 gap-6">
-                        <div>ProductId : {product.productId}</div>
+                        <div>userId : {order.userId}</div>
                       </div>
                     ))}
 
