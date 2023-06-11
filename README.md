@@ -27,12 +27,14 @@ Provide a detailed description of your project, including its purpose and main f
    ```
 
    inside then .env file :
-   NODE_ENV=development
-   PORT = 5002
-   EMAIL_SENDER= toto@domaine.com
-   JWT_SECRET=secretcode
-   JWT_EXPIRES_IN=4h
-   APP_NAME=MyApp
+
+```NODE_ENV=development
+ PORT = 5002
+ EMAIL_SENDER= toto@domaine.com
+ JWT_SECRET=secretcode
+ JWT_EXPIRES_IN=4h
+ APP_NAME=MyApp
+```
 
 3. Install the dependencies:
 
